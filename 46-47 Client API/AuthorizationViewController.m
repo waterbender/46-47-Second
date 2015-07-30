@@ -11,6 +11,7 @@
 @interface AuthorizationViewController () <UIWebViewDelegate>
 
 @property (copy, nonatomic) BlockToken blockToken;
+@property (strong, nonatomic) UIWebView *webView;
 
 @end
 
@@ -36,6 +37,8 @@
     rect.origin = CGPointZero;
     
     UIWebView *webView = [[UIWebView alloc] initWithFrame:rect];
+    
+    self.webView = webView;
     
     webView.delegate = self;
     
@@ -80,31 +83,56 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
+    AccessToken *token = [[AccessToken alloc] init];
     
+    if ([[[request URL] description] rangeOfString:@"access_token"].location != NSNotFound) {
+        
+        NSString *query = [[request URL] description];
+        NSArray *array = [query componentsSeparatedByString:@"#"];
+        
+        if ([array count] > 1) {
+            
+            query = [array lastObject];
+        }
+        
+        NSArray *pairs = [query componentsSeparatedByString:@"&"];
+        
+        for (NSString *pair in pairs) {
+            
+            NSArray *values = [pair componentsSeparatedByString:@"="];
+            
+            if ([values count] == 2) {
+                
+                NSString *key = [values firstObject];
+                
+                if ([key isEqualToString:@"access_token"]) {
+                    
+                    token.token = [values lastObject];
+                } else if ([key isEqualToString:@"expires_in"]) {
+                    
+                    double expires = [[values lastObject] doubleValue];
+                    token.expires = [NSDate dateWithTimeIntervalSinceNow:expires];
+                } else if ([key isEqualToString:@"user_id"]) {
+                    
+                    token.id = [values lastObject];
+                }
+                
+            }
+        }
+        
+        self.webView.delegate = nil;
+        
+        if (self.blockToken) {
+            self.blockToken(token);
+        }
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+        return NO;
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     NSLog(@"%@", request);
-    
-    
-    
     
     
     return YES;

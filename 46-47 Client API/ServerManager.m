@@ -88,6 +88,39 @@
 }
 
 
+- (void) getUserFromID : (NSString*) ownerID
+            userSuccess: (void(^)(User *user)) success
+            andFailture: (void(^)(NSError *error)) failture {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            ownerID, @"user_ids",
+                            @"photo_50", @"fields",
+                            @"5.35", @"v"
+                            , nil];
+    
+    [self.manager GET:@"users.get" parameters:params success:^(AFHTTPRequestOperation * operation, id dictionary) {
+        
+        NSArray *dictArray = [dictionary objectForKey:@"response"];
+
+        User *user = [[User alloc] initWithServerResponse:[dictArray firstObject]];
+        
+        if (success) {
+            success(user);
+        }
+        
+    } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
+        
+        NSLog(@"%@ %ld", [error localizedDescription], [operation.responseObject statusCode]);
+        
+        if (failture) {
+            failture(error);
+        }
+    }];
+    
+}
+
+
+
 - (void) authorizeUserWithSuccess: (void(^)(User *user)) success
 andFailture: (void(^)(NSError *error)) failture {
     
@@ -95,6 +128,12 @@ andFailture: (void(^)(NSError *error)) failture {
        
         self.token = token;
         
+        [self getUserFromID:token.id userSuccess:^(User *user) {
+            
+            success(user);
+        } andFailture:^(NSError *error) {
+            NSLog(@"Fail USER");
+        }];
     }];
     
     UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:vc];

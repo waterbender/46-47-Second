@@ -25,6 +25,9 @@
     
     [[ServerManager sharedManager] authorizeUserWithSuccess:^(User *user) {
         
+        
+        
+        
     } andFailture:^(NSError *error) {
         
     }];

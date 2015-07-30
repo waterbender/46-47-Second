@@ -37,6 +37,7 @@
 		EC83011C1B6A13F500CB020F /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC83011B1B6A13F500CB020F /* AuthorizationViewController.m */; };
 		EC83011F1B6A16DA00CB020F /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = EC83011E1B6A16DA00CB020F /* AccessToken.m */; };
 		EC8301221B6A179500CB020F /* ServerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8301211B6A179500CB020F /* ServerObject.m */; };
+		ECA584211B6A3F7B0051018F /* PostCellTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA584201B6A3F7B0051018F /* PostCellTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		EC83011E1B6A16DA00CB020F /* AccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessToken.m; sourceTree = "<group>"; };
 		EC8301201B6A179500CB020F /* ServerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerObject.h; sourceTree = "<group>"; };
 		EC8301211B6A179500CB020F /* ServerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerObject.m; sourceTree = "<group>"; };
+		ECA5841F1B6A3F7B0051018F /* PostCellTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCellTableView.h; sourceTree = "<group>"; };
+		ECA584201B6A3F7B0051018F /* PostCellTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCellTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,7 @@
 				EC8301141B6A038000CB020F /* Models */,
 				EC8301151B6A039600CB020F /* Controllers */,
 				EC8301161B6A03AA00CB020F /* Libs */,
+				ECA584221B6A3F7E0051018F /* Cells */,
 				EC8300B41B69F91700CB020F /* AppDelegate.h */,
 				EC8300B51B69F91700CB020F /* AppDelegate.m */,
 				EC83010E1B6A024800CB020F /* ServerManager.h */,
@@ -286,6 +290,15 @@
 			name = Libs;
 			sourceTree = "<group>";
 		};
+		ECA584221B6A3F7E0051018F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ECA5841F1B6A3F7B0051018F /* PostCellTableView.h */,
+				ECA584201B6A3F7B0051018F /* PostCellTableView.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -409,6 +422,7 @@
 				EC8301061B6A022B00CB020F /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EC8301051B6A022B00CB020F /* AFURLSessionManager.m in Sources */,
 				EC8301101B6A024800CB020F /* ServerManager.m in Sources */,
+				ECA584211B6A3F7B0051018F /* PostCellTableView.m in Sources */,
 				EC8301221B6A179500CB020F /* ServerObject.m in Sources */,
 				EC8300B61B69F91700CB020F /* AppDelegate.m in Sources */,
 				EC8300B31B69F91700CB020F /* main.m in Sources */,
@@ -606,6 +620,7 @@
 				EC8300D21B69F91700CB020F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC8300D31B69F91700CB020F /* Build configuration list for PBXNativeTarget "46-47 Client APITests" */ = {
 			isa = XCConfigurationList;
@@ -614,6 +629,7 @@
 				EC8300D51B69F91700CB020F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

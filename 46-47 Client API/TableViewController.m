@@ -9,10 +9,12 @@
 #import "TableViewController.h"
 #import "ServerManager.h"
 #import "Wall.h"
+#import "PostCellTableView.h"
 
 @interface TableViewController ()
 
 @property (strong, nonatomic) NSMutableArray *allPosts;
+@property (strong, nonatomic) User *loadUser;
 
 @end
 
@@ -25,8 +27,7 @@
     
     [[ServerManager sharedManager] authorizeUserWithSuccess:^(User *user) {
         
-        
-        
+        self.loadUser = user;
         
     } andFailture:^(NSError *error) {
         
@@ -68,19 +69,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *keyForCell = @"TextCell";
-    
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:keyForCell];
+
     
     if (indexPath.row == [self.allPosts count]) {
+        
+        static NSString *keyForCell = @"cell";
+        
+        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:keyForCell];
+        
+        if (!cell) {
+            
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:keyForCell];
+        }
 
-        //UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:keyForCell];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
         cell.textLabel.text = @"Load more!!";
         
         return cell;
+        
     } else {
         
-        //UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:keyForCell];
+        static NSString *keyForPost = @"TextCell";
+        
+        PostCellTableView *cell = [self.tableView dequeueReusableCellWithIdentifier:keyForPost];
         
         Wall *wall = [self.allPosts objectAtIndex:indexPath.row];
         cell.textLabel.text = wall.text;
@@ -89,6 +100,18 @@
     }
     
     return [[UITableViewCell alloc] init];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row != [self.allPosts count]) {
+        Wall *wall = [self.allPosts objectAtIndex:indexPath.row];
+        return [PostCellTableView heightForCellText: wall.text];
+    } else {
+        
+        return 50.f;
+    }
+
 }
 
 

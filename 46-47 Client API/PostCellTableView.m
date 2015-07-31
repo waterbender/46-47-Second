@@ -26,7 +26,7 @@
     CGFloat offset = 1;
     
     
-    UIFont *font = [UIFont systemFontOfSize:14.f];
+    UIFont *font = [UIFont systemFontOfSize:17.f];
     
     NSShadow *shadow = [[NSShadow alloc] init];
     shadow.shadowColor = [UIColor grayColor];
@@ -45,7 +45,7 @@
     
     CGRect rect = [text boundingRectWithSize:CGSizeMake(320 - 2*offset, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dictionary context:nil];
     
-    return CGRectGetHeight(rect) + 2 * offset;
+    return CGRectGetHeight(rect) + 2 * offset + 70;
 }
 
 @end

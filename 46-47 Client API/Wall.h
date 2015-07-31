@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "ServerObject.h"
+#import "User.h"
 
 @interface Wall : ServerObject
 
 @property (strong, nonatomic) NSString *text;
+@property (assign, nonatomic) NSInteger likes;
+@property (strong, nonatomic) User *user;
 
 @end

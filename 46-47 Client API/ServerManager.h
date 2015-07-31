@@ -24,5 +24,13 @@
 - (void) authorizeUserWithSuccess: (void(^)(User *user)) success
                       andFailture: (void(^)(NSError *error)) failture;
 
+- (void) postNewsOnId : (NSString*) id
+message: (NSString*) message
+witthSuccess: (void(^)(NSString *str)) success
+andFailture: (void(^)(NSError *error)) failture;
+
+- (void) getUserFromID : (NSString*) ownerID
+            userSuccess: (void(^)(User *user)) success
+            andFailture: (void(^)(NSError *error)) failture;
 
 @end

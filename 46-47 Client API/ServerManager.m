@@ -61,6 +61,9 @@
     
     [self.manager GET:@"wall.get" parameters:params success:^(AFHTTPRequestOperation * operation, id dictionary) {
         
+        NSLog(@"%@", dictionary);
+        
+        
         NSMutableArray *resultArray = [NSMutableArray array];
         
         NSArray *dictArray = [[dictionary objectForKey:@"response"] objectForKey:@"items"];
@@ -94,7 +97,7 @@
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             ownerID, @"user_ids",
-                            @"photo_50", @"fields",
+                            @"photo_50, photo_100", @"fields",
                             @"5.35", @"v"
                             , nil];
     
@@ -143,6 +146,34 @@ andFailture: (void(^)(NSError *error)) failture {
                                    
     [mainCtrl presentViewController:navC animated:YES completion:nil];
     
+}
+
+- (void) postNewsOnId : (NSString*) ourID
+            message: (NSString*) message
+        witthSuccess: (void(^)(NSString *str)) success
+        andFailture: (void(^)(NSError *error)) failture {
+    
+    
+            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    ourID, @"owner_id",
+                                    message, @"message",
+                                    self.token.token, @"access_token",
+                                    @"5.35", @"v",
+                                    nil];
+            
+            
+            [self.manager POST:@"wall.post" parameters:params success:^(AFHTTPRequestOperation * operation, NSDictionary *dictionary) {
+                
+                NSLog(@"%@", dictionary);
+                
+            } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
+                
+                NSLog(@"%@ %ld", [error localizedDescription], [operation.responseObject statusCode]);
+                
+                if (failture) {
+                    failture(error);
+                }
+            }];
 }
 
 @end

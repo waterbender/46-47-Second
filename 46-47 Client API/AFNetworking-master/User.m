@@ -19,6 +19,7 @@
         self.firstName = [dictionary objectForKey:@"first_name"];
         self.lastName = [dictionary objectForKey:@"last_name"];
         self.photo_50 = [dictionary objectForKey:@"photo_50"];
+        self.photo_100 = [dictionary objectForKey:@"photo_100"];
     }
     return self;
 }

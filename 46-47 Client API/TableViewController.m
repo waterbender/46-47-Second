@@ -10,11 +10,21 @@
 #import "ServerManager.h"
 #import "Wall.h"
 #import "PostCellTableView.h"
+#import "SendTextCell.h"
+#import "UIImageView+AFNetworking.h"
+#import "UIView+renderingPicture.h"
 
 @interface TableViewController ()
 
+@property (strong, nonatomic) NSString *groupId;
 @property (strong, nonatomic) NSMutableArray *allPosts;
 @property (strong, nonatomic) User *loadUser;
+@property (assign, nonatomic) BOOL chooseText;
+@property (assign, nonatomic) CGRect originRect;
+@property (strong, nonatomic) SendTextCell *cell;
+
+- (IBAction)sendPost:(UIButton *)sender;
+
 
 @end
 
@@ -24,7 +34,9 @@
     [super viewDidLoad];
     
     self.allPosts = [[NSMutableArray alloc] init];
-    
+    self.chooseText = NO;
+    self.groupId = @"-58860049";
+    //self.groupId = @"202931095";
     [[ServerManager sharedManager] authorizeUserWithSuccess:^(User *user) {
         
         self.loadUser = user;
@@ -37,13 +49,13 @@
 
 - (void) generatePosts {
     
-    [[ServerManager sharedManager] getWallFromID:@"-58860049"
+    [[ServerManager sharedManager] getWallFromID:self.groupId
                                       withOffset: [self.allPosts count]
                                         andCount:4
                                      wallSuccess:^(NSMutableArray *array) {
                                        
                                          [self.allPosts addObjectsFromArray:array];
-                                         
+                                        
                                          [self.tableView reloadData];
                                          
                                      }
@@ -62,7 +74,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [self.allPosts count] + 1;
+    return [self.allPosts count] + 2;
 }
 
 
@@ -71,7 +83,7 @@
     
 
     
-    if (indexPath.row == [self.allPosts count]) {
+    if (indexPath.row == [self.allPosts count] + 1) {
         
         static NSString *keyForCell = @"cell";
         
@@ -84,19 +96,57 @@
 
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         cell.textLabel.text = @"Load more!!";
+        cell.textLabel.textColor = [UIColor scrollViewTexturedBackgroundColor];
         
         return cell;
         
+    } else if ((indexPath.row == 0)&&(self.chooseText == NO)) {
+
+        static NSString *sendKey = @"SendPostText";
+
+        SendTextCell *cell = [self.tableView dequeueReusableCellWithIdentifier:sendKey];
+        
+        return cell; }
+    
+    else if ((indexPath.row == 0)&&(self.chooseText == YES)) {
+        
+        static NSString *sendKeyComplite = @"SendPost";
+        
+        SendTextCell *cell = [self.tableView dequeueReusableCellWithIdentifier:sendKeyComplite];
+        
+        return cell;
+
     } else {
         
         static NSString *keyForPost = @"TextCell";
         
         PostCellTableView *cell = [self.tableView dequeueReusableCellWithIdentifier:keyForPost];
         
-        Wall *wall = [self.allPosts objectAtIndex:indexPath.row];
-        cell.textLabel.text = wall.text;
+        Wall *wall = [self.allPosts objectAtIndex:indexPath.row - 1];
+        cell.postText.text = wall.text;
+        cell.likeLabel.text = [@(wall.likes) stringValue];
+        cell.nameAndLastName.text = [NSString stringWithFormat:@"%@ %@", wall.user.firstName, wall.user.lastName];
+
+        NSURL *url = [NSURL URLWithString: wall.user.photo_100];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+        __weak PostCellTableView *weakCell = cell;
+        weakCell.imageView.image = nil;
+        
+        [weakCell.imageView setImageWithURLRequest:request placeholderImage:nil success:^void(NSURLRequest * request, NSHTTPURLResponse * response, UIImage * image) {
+            
+            weakCell.photo.image = image;
+            
+            [weakCell.photo renderingWithRadius:20];
+            
+            [weakCell layoutSubviews];
+            
+        } failure:^void(NSURLRequest * request, NSHTTPURLResponse * response, NSError * error) {
+            
+        }];
         
         return cell;
+        
     }
     
     return [[UITableViewCell alloc] init];
@@ -104,14 +154,18 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row != [self.allPosts count]) {
-        Wall *wall = [self.allPosts objectAtIndex:indexPath.row];
+    if ((indexPath.row != [self.allPosts count] + 1) && (indexPath.row != 0)) {
+        Wall *wall = [self.allPosts objectAtIndex:indexPath.row - 1];
         return [PostCellTableView heightForCellText: wall.text];
+        
+    } else if (indexPath.row == 0) {
+      
+        return self.chooseText ? 120 : 40.f;
+        
     } else {
         
         return 50.f;
     }
-
 }
 
 
@@ -121,8 +175,40 @@
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == [self.allPosts count]) {
+    if (indexPath.row == [self.allPosts count] + 1) {
+        
         [self generatePosts];
-    }
+        
+    } else if (indexPath.row == 0) {
+    
+    self.chooseText = !self.chooseText;
+    
+    
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView endUpdates]; } else {
+            
+            
+            self.chooseText = NO;
+            [self.tableView beginUpdates];
+            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView endUpdates];
+            
+        }
+    
 }
+
+- (IBAction)sendPost:(UIButton *)sender {
+
+    SendTextCell *cell = (SendTextCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    NSString *text = cell.textView.text;
+    
+    
+    [[ServerManager sharedManager] postNewsOnId:self.groupId message:text witthSuccess:^(NSString *str) {
+     
+     } andFailture:^(NSError *error) {
+         
+     }];
+}
+
 @end

@@ -38,6 +38,9 @@
 		EC83011F1B6A16DA00CB020F /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = EC83011E1B6A16DA00CB020F /* AccessToken.m */; };
 		EC8301221B6A179500CB020F /* ServerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8301211B6A179500CB020F /* ServerObject.m */; };
 		ECA584211B6A3F7B0051018F /* PostCellTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA584201B6A3F7B0051018F /* PostCellTableView.m */; };
+		ECA584241B6B28860051018F /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA584231B6B28860051018F /* 1.png */; };
+		ECA584271B6B2F060051018F /* SendTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA584261B6B2F060051018F /* SendTextCell.m */; };
+		ECA5842A1B6B88080051018F /* UIView+renderingPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA584291B6B88080051018F /* UIView+renderingPicture.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +117,11 @@
 		EC8301211B6A179500CB020F /* ServerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerObject.m; sourceTree = "<group>"; };
 		ECA5841F1B6A3F7B0051018F /* PostCellTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCellTableView.h; sourceTree = "<group>"; };
 		ECA584201B6A3F7B0051018F /* PostCellTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCellTableView.m; sourceTree = "<group>"; };
+		ECA584231B6B28860051018F /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		ECA584251B6B2F060051018F /* SendTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendTextCell.h; sourceTree = "<group>"; };
+		ECA584261B6B2F060051018F /* SendTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendTextCell.m; sourceTree = "<group>"; };
+		ECA584281B6B88080051018F /* UIView+renderingPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+renderingPicture.h"; sourceTree = "<group>"; };
+		ECA584291B6B88080051018F /* UIView+renderingPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+renderingPicture.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,10 +171,13 @@
 				EC8300B51B69F91700CB020F /* AppDelegate.m */,
 				EC83010E1B6A024800CB020F /* ServerManager.h */,
 				EC83010F1B6A024800CB020F /* ServerManager.m */,
+				ECA584231B6B28860051018F /* 1.png */,
 				EC8300BA1B69F91700CB020F /* Main.storyboard */,
 				EC8300BD1B69F91700CB020F /* Images.xcassets */,
 				EC8300BF1B69F91700CB020F /* LaunchScreen.xib */,
 				EC8300B01B69F91700CB020F /* Supporting Files */,
+				ECA584281B6B88080051018F /* UIView+renderingPicture.h */,
+				ECA584291B6B88080051018F /* UIView+renderingPicture.m */,
 			);
 			path = "46-47 Client API";
 			sourceTree = "<group>";
@@ -295,6 +306,8 @@
 			children = (
 				ECA5841F1B6A3F7B0051018F /* PostCellTableView.h */,
 				ECA584201B6A3F7B0051018F /* PostCellTableView.m */,
+				ECA584251B6B2F060051018F /* SendTextCell.h */,
+				ECA584261B6B2F060051018F /* SendTextCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -381,6 +394,7 @@
 			files = (
 				EC8300BC1B69F91700CB020F /* Main.storyboard in Resources */,
 				EC8300C11B69F91700CB020F /* LaunchScreen.xib in Resources */,
+				ECA584241B6B28860051018F /* 1.png in Resources */,
 				EC8300BE1B69F91700CB020F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +415,7 @@
 			files = (
 				EC8300FD1B6A022B00CB020F /* AFHTTPRequestOperation.m in Sources */,
 				EC83010A1B6A022B00CB020F /* UIImageView+AFNetworking.m in Sources */,
+				ECA5842A1B6B88080051018F /* UIView+renderingPicture.m in Sources */,
 				EC8300B91B69F91700CB020F /* TableViewController.m in Sources */,
 				EC8300FE1B6A022B00CB020F /* AFHTTPRequestOperationManager.m in Sources */,
 				EC83010B1B6A022B00CB020F /* UIProgressView+AFNetworking.m in Sources */,
@@ -411,6 +426,7 @@
 				EC83011C1B6A13F500CB020F /* AuthorizationViewController.m in Sources */,
 				EC8301021B6A022B00CB020F /* AFURLConnectionOperation.m in Sources */,
 				EC8301091B6A022B00CB020F /* UIButton+AFNetworking.m in Sources */,
+				ECA584271B6B2F060051018F /* SendTextCell.m in Sources */,
 				EC8301071B6A022B00CB020F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EC8301011B6A022B00CB020F /* AFSecurityPolicy.m in Sources */,
 				EC8301191B6A05F200CB020F /* Wall.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "Wall.h"
+#import "ServerManager.h"
 
 @implementation Wall
 
@@ -15,8 +16,15 @@
     self = [super initWithServerResponse:dictionary];
     if (self) {
         
-        self.text = [dictionary objectForKey:@"text"];
         
+        
+        self.text = [dictionary objectForKey:@"text"];
+        self.likes = [[[dictionary objectForKey:@"likes"] objectForKey:@"count"] integerValue];
+        
+        [[ServerManager sharedManager] getUserFromID:[dictionary objectForKey:@"from_id"] userSuccess:^(User *user) {
+            self.user = user;
+            
+        } andFailture:nil];
     }
     return self;
 }

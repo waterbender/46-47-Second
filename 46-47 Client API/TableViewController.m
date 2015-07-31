@@ -126,6 +126,10 @@
         cell.postText.text = wall.text;
         cell.likeLabel.text = [@(wall.likes) stringValue];
         cell.nameAndLastName.text = [NSString stringWithFormat:@"%@ %@", wall.user.firstName, wall.user.lastName];
+        
+        NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+        [formater setDateFormat:@"ss dd/MM/YYYY"];
+        cell.dateOfThePost.text = [formater stringFromDate:wall.date];
 
         NSURL *url = [NSURL URLWithString: wall.user.photo_100];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];

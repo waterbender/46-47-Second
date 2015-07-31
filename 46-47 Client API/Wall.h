@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSString *text;
 @property (assign, nonatomic) NSInteger likes;
 @property (strong, nonatomic) User *user;
+@property (strong, nonatomic) NSDate *date;
 
 @end

@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TableViewController : UITableViewController
-@property (strong, nonatomic) IBOutlet UIButton *sendButton;
 @end
 

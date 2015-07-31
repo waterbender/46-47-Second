@@ -11,7 +11,7 @@
 @interface PostCellTableView : UITableViewCell
 
 
-@property (weak, nonatomic) IBOutlet UILabel *postText, *likeLabel, *nameAndLastName;
+@property (weak, nonatomic) IBOutlet UILabel *postText, *likeLabel, *nameAndLastName, *dateOfThePost;
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 
 + (CGFloat) heightForCellText : (NSString*) text;

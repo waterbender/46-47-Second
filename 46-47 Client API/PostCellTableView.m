@@ -45,7 +45,7 @@
     
     CGRect rect = [text boundingRectWithSize:CGSizeMake(320 - 2*offset, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dictionary context:nil];
     
-    return CGRectGetHeight(rect) + 2 * offset + 70;
+    return CGRectGetHeight(rect) + 2 * offset + 80;
 }
 
 @end

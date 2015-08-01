@@ -139,7 +139,9 @@ andFailture: (void(^)(NSError *error)) failture {
         
         [self getUserFromID:token.id userSuccess:^(User *user) {
             
+            self.userForToken = user;
             success(user);
+
         } andFailture:^(NSError *error) {
             NSLog(@"Fail USER");
         }];

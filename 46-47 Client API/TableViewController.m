@@ -57,8 +57,10 @@
         
     } andFailture:nil];
     
-    [self authorizeUser];
-    
+    self.loadUser = [ServerManager sharedManager].userForToken;
+    if (!self.loadUser) {
+        [self authorizeUser];
+    }
     
 }
 

@@ -37,4 +37,7 @@ andFailture: (void(^)(NSError *error)) failture;
              userSuccess: (void(^)(Group *group)) success
              andFailture: (void(^)(NSError *error)) failture;
 
+
+@property (strong, nonatomic) User *userForToken;
+
 @end

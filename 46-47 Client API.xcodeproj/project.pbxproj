@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24C02A8958C1F6146DF7578F /* libPods-46-47 Client API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EA6A4C23DECA9C314AFB2B /* libPods-46-47 Client API.a */; };
+		EC51FB8D1B6CC3EA008E036C /* AboutUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EC51FB8C1B6CC3EA008E036C /* AboutUser.m */; };
 		EC8300B31B69F91700CB020F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8300B21B69F91700CB020F /* main.m */; };
 		EC8300B61B69F91700CB020F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8300B51B69F91700CB020F /* AppDelegate.m */; };
 		EC8300B91B69F91700CB020F /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8300B81B69F91700CB020F /* TableViewController.m */; };
@@ -62,6 +63,8 @@
 		70EA6A4C23DECA9C314AFB2B /* libPods-46-47 Client API.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-46-47 Client API.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD42524A18CD0C00D5D6818E /* Pods-46-47 Client API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-46-47 Client API.release.xcconfig"; path = "Pods/Target Support Files/Pods-46-47 Client API/Pods-46-47 Client API.release.xcconfig"; sourceTree = "<group>"; };
 		B651667DED56587A0A2F574A /* Pods-46-47 Client API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-46-47 Client API.debug.xcconfig"; path = "Pods/Target Support Files/Pods-46-47 Client API/Pods-46-47 Client API.debug.xcconfig"; sourceTree = "<group>"; };
+		EC51FB8B1B6CC3EA008E036C /* AboutUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUser.h; sourceTree = "<group>"; };
+		EC51FB8C1B6CC3EA008E036C /* AboutUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUser.m; sourceTree = "<group>"; };
 		EC8300AD1B69F91700CB020F /* 46-47 Client API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "46-47 Client API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8300B11B69F91700CB020F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC8300B21B69F91700CB020F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				EC83011E1B6A16DA00CB020F /* AccessToken.m */,
 				ECA5842B1B6B9DD60051018F /* Group.h */,
 				ECA5842C1B6B9DD60051018F /* Group.m */,
+				EC51FB8B1B6CC3EA008E036C /* AboutUser.h */,
+				EC51FB8C1B6CC3EA008E036C /* AboutUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -524,6 +529,7 @@
 				EC83010D1B6A022B00CB020F /* UIWebView+AFNetworking.m in Sources */,
 				EC8300FF1B6A022B00CB020F /* AFHTTPSessionManager.m in Sources */,
 				EC8301081B6A022B00CB020F /* UIAlertView+AFNetworking.m in Sources */,
+				EC51FB8D1B6CC3EA008E036C /* AboutUser.m in Sources */,
 				EC8301031B6A022B00CB020F /* AFURLRequestSerialization.m in Sources */,
 				EC8301061B6A022B00CB020F /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EC8301051B6A022B00CB020F /* AFURLSessionManager.m in Sources */,

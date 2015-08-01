@@ -18,11 +18,14 @@
         
         NSLog(@"%@", dictionary);
         
+        
+        
         NSNumber *dateNum = [dictionary objectForKey:@"date"];
         self.date = [NSDate dateWithTimeIntervalSince1970:[dateNum doubleValue]];
         self.text = [dictionary objectForKey:@"text"];
         self.likes = [[[dictionary objectForKey:@"likes"] objectForKey:@"count"] integerValue];
         
+
         [[ServerManager sharedManager] getUserFromID:[dictionary objectForKey:@"from_id"] userSuccess:^(User *user) {
             self.user = user;
             

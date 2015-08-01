@@ -11,6 +11,7 @@
 #import "AccessToken.h"
 #import "AuthorizationViewController.h"
 
+
 @interface ServerManager()
 
 @property (strong, nonatomic) AFHTTPRequestOperationManager *manager;
@@ -95,6 +96,8 @@
             userSuccess: (void(^)(User *user)) success
             andFailture: (void(^)(NSError *error)) failture {
     
+    
+    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             ownerID, @"user_ids",
                             @"photo_50, photo_100", @"fields",
@@ -102,6 +105,9 @@
                             , nil];
     
     [self.manager GET:@"users.get" parameters:params success:^(AFHTTPRequestOperation * operation, id dictionary) {
+        
+        
+        NSLog(@"%@", dictionary);
         
         NSArray *dictArray = [dictionary objectForKey:@"response"];
 
@@ -166,6 +172,10 @@ andFailture: (void(^)(NSError *error)) failture {
                 
                 NSLog(@"%@", dictionary);
                 
+                
+                
+                
+                
             } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
                 
                 NSLog(@"%@ %ld", [error localizedDescription], [operation.responseObject statusCode]);
@@ -175,5 +185,46 @@ andFailture: (void(^)(NSError *error)) failture {
                 }
             }];
 }
+
+
+
+
+- (void) getGroupFromID : (NSString*) ownerID
+            userSuccess: (void(^)(Group *group)) success
+            andFailture: (void(^)(NSError *error)) failture {
+    
+    
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            ownerID, @"group_ids",
+                            @"description", @"fields",
+                            @"5.35", @"v"
+                            , nil];
+    
+    [self.manager GET:@"groups.getById" parameters:params success:^(AFHTTPRequestOperation * operation, id dictionary) {
+        
+        
+        NSLog(@"%@", dictionary);
+        
+        NSArray *dictArray = [dictionary objectForKey:@"response"];
+        
+        Group *group = [[Group alloc] initWithServerResponse:[dictArray firstObject]];
+        
+        if (success) {
+            success(group);
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
+        
+        NSLog(@"%@ %ld", [error localizedDescription], [operation.responseObject statusCode]);
+        
+        if (failture) {
+            failture(error);
+        }
+    }];
+    
+}
+
 
 @end

@@ -41,6 +41,8 @@
 		ECA584241B6B28860051018F /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA584231B6B28860051018F /* 1.png */; };
 		ECA584271B6B2F060051018F /* SendTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA584261B6B2F060051018F /* SendTextCell.m */; };
 		ECA5842A1B6B88080051018F /* UIView+renderingPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA584291B6B88080051018F /* UIView+renderingPicture.m */; };
+		ECA5842D1B6B9DD60051018F /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA5842C1B6B9DD60051018F /* Group.m */; };
+		ECA584301B6BA1810051018F /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA5842F1B6BA1810051018F /* HeaderCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +124,10 @@
 		ECA584261B6B2F060051018F /* SendTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendTextCell.m; sourceTree = "<group>"; };
 		ECA584281B6B88080051018F /* UIView+renderingPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+renderingPicture.h"; sourceTree = "<group>"; };
 		ECA584291B6B88080051018F /* UIView+renderingPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+renderingPicture.m"; sourceTree = "<group>"; };
+		ECA5842B1B6B9DD60051018F /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		ECA5842C1B6B9DD60051018F /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		ECA5842E1B6BA1810051018F /* HeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderCell.h; sourceTree = "<group>"; };
+		ECA5842F1B6BA1810051018F /* HeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +284,8 @@
 				EC8301181B6A05F200CB020F /* Wall.m */,
 				EC83011D1B6A16DA00CB020F /* AccessToken.h */,
 				EC83011E1B6A16DA00CB020F /* AccessToken.m */,
+				ECA5842B1B6B9DD60051018F /* Group.h */,
+				ECA5842C1B6B9DD60051018F /* Group.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -308,6 +316,8 @@
 				ECA584201B6A3F7B0051018F /* PostCellTableView.m */,
 				ECA584251B6B2F060051018F /* SendTextCell.h */,
 				ECA584261B6B2F060051018F /* SendTextCell.m */,
+				ECA5842E1B6BA1810051018F /* HeaderCell.h */,
+				ECA5842F1B6BA1810051018F /* HeaderCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -426,6 +436,7 @@
 				EC83011C1B6A13F500CB020F /* AuthorizationViewController.m in Sources */,
 				EC8301021B6A022B00CB020F /* AFURLConnectionOperation.m in Sources */,
 				EC8301091B6A022B00CB020F /* UIButton+AFNetworking.m in Sources */,
+				ECA584301B6BA1810051018F /* HeaderCell.m in Sources */,
 				ECA584271B6B2F060051018F /* SendTextCell.m in Sources */,
 				EC8301071B6A022B00CB020F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EC8301011B6A022B00CB020F /* AFSecurityPolicy.m in Sources */,
@@ -440,6 +451,7 @@
 				EC8301101B6A024800CB020F /* ServerManager.m in Sources */,
 				ECA584211B6A3F7B0051018F /* PostCellTableView.m in Sources */,
 				EC8301221B6A179500CB020F /* ServerObject.m in Sources */,
+				ECA5842D1B6B9DD60051018F /* Group.m in Sources */,
 				EC8300B61B69F91700CB020F /* AppDelegate.m in Sources */,
 				EC8300B31B69F91700CB020F /* main.m in Sources */,
 			);

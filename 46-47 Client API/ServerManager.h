@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import "User.h"
-
+#import "Group.h"
 
 @interface ServerManager : NSObject
 
@@ -32,5 +32,9 @@ andFailture: (void(^)(NSError *error)) failture;
 - (void) getUserFromID : (NSString*) ownerID
             userSuccess: (void(^)(User *user)) success
             andFailture: (void(^)(NSError *error)) failture;
+
+- (void) getGroupFromID : (NSString*) ownerID
+             userSuccess: (void(^)(Group *group)) success
+             andFailture: (void(^)(NSError *error)) failture;
 
 @end

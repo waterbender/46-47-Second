@@ -1,12 +1,13 @@
 //
-//  ViewController.m
+//  WallWithPostsController.m
 //  46-47 Client API
 //
-//  Created by  ZHEKA on 30.07.15.
+//  Created by  ZHEKA on 04.08.15.
 //  Copyright (c) 2015 Pasko Eugene. All rights reserved.
 //
 
-#import "TableViewController.h"
+#import "WallWithPostsController.h"
+
 #import "ServerManager.h"
 #import "Wall.h"
 #import "PostCellTableView.h"
@@ -16,7 +17,7 @@
 #import "Group.h"
 #import "HeaderCell.h"
 
-@interface TableViewController ()
+@interface WallWithPostsController ()
 
 @property (strong, nonatomic) NSString *groupId;
 @property (strong, nonatomic) NSMutableArray *allPosts;
@@ -31,7 +32,7 @@
 
 @end
 
-@implementation TableViewController
+@implementation WallWithPostsController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,21 +40,21 @@
     self.allPosts = [[NSMutableArray alloc] init];
     self.chooseText = NO;
     self.groupId = @"-58860049";
- 
+    
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refreshWall) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
-
+    
     [[ServerManager sharedManager] getGroupFromID:@"58860049" userSuccess:^(Group *group) {
         
         self.group = group;
         
         NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:0];
         
-//        [self.tableView beginUpdates];
-//        [self.tableView reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        [self.tableView endUpdates];
+        [self.tableView beginUpdates];
+        [self.tableView reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView endUpdates];
         
     } andFailture:nil];
     
@@ -77,7 +78,7 @@
                                          
                                          [self.refreshControl endRefreshing];
                                          
-                                         //[self.tableView reloadData];
+                                         [self.tableView reloadData];
                                          
                                      }
                                      andFailture:^(NSError *error) {
@@ -99,20 +100,22 @@
 
 - (void) generatePosts {
     
+    @synchronized (self.allPosts) {
+        
     [[ServerManager sharedManager] getWallFromID:self.groupId
                                       withOffset: [self.allPosts count]
                                         andCount:4
                                      wallSuccess:^(NSMutableArray *array) {
-                                       
+                                         
                                          [self.allPosts addObjectsFromArray:array];
-                                        
+                                         
                                          [self.tableView reloadData];
                                          
                                      }
                                      andFailture:^(NSError *error) {
                                          NSLog(@"Something wrong");
                                      }];
-    
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,7 +123,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - UITableViewDataSource 
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -131,44 +134,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == [self.allPosts count] + 2) {
-        
-        static NSString *keyForCell = @"cell";
-        
-        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:keyForCell];
-        
-        if (!cell) {
-            
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:keyForCell];
-        }
+    static NSString *keyHeaderKey = @"Header";
+    static NSString *previewSendTextKey = @"SendPostText";
+    static NSString *sendTextKey = @"SendPost";
+    static NSString *postCellKey = @"TextPostCellKey";
+    static NSString *keyForCell = @"generatePostsCellKey";
 
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.textLabel.text = @"Load more!!";
-        cell.textLabel.textColor = [UIColor scrollViewTexturedBackgroundColor];
-        
-        return cell;
-        
-    } else if ((indexPath.row == 1)&&(self.chooseText == NO)) {
-
-        static NSString *sendKey = @"SendPostText";
-
-        SendTextCell *cell = [self.tableView dequeueReusableCellWithIdentifier:sendKey];
-        
-        return cell; }
     
-    else if ((indexPath.row == 1)&&(self.chooseText == YES)) {
+    if (indexPath.row == 0) {
         
-        static NSString *sendKeyComplite = @"SendPost";
-        
-        SendTextCell *cell = [self.tableView dequeueReusableCellWithIdentifier:sendKeyComplite];
-        
-        return cell;
-
-    } else if (indexPath.row == 0) {
-        
-        static NSString *keyHeader = @"Header";
-        
-        HeaderCell *cell = [self.tableView dequeueReusableCellWithIdentifier:keyHeader];
+        HeaderCell *cell = [self.tableView dequeueReusableCellWithIdentifier:keyHeaderKey];
         
         cell.nameLabel.text = self.group.name;
         
@@ -190,11 +165,40 @@
         
         return cell;
         
+    } else if (indexPath.row == 1) {
+        
+        if (self.chooseText) {
+            
+            PostCellTableView *cell = [self.tableView dequeueReusableCellWithIdentifier:sendTextKey];
+            
+            return cell;
+        
+        } else {
+            
+            PostCellTableView *cell = [self.tableView dequeueReusableCellWithIdentifier:previewSendTextKey];
+            
+            return cell;
+            
+        }
+        
+    }  if (indexPath.row == [self.allPosts count] + 2) {
+        
+        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:keyForCell];
+        
+        if (!cell) {
+            
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:keyForCell];
+        }
+        
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.text = @"Load more!!";
+        cell.textLabel.textColor = [UIColor scrollViewTexturedBackgroundColor];
+        
+        return cell;
+        
     } else {
         
-        static NSString *keyForPost = @"TextCellKey";
-        
-        PostCellTableView *cell = [self.tableView dequeueReusableCellWithIdentifier:keyForPost];
+        PostCellTableView *cell = [self.tableView dequeueReusableCellWithIdentifier:postCellKey];
         cell.navConroller = self.navigationController;
         
         Wall *wall = [self.allPosts objectAtIndex:indexPath.row - 2];
@@ -209,7 +213,7 @@
         NSDateFormatter *formater = [[NSDateFormatter alloc] init];
         [formater setDateFormat:@"ss dd/MM/YYYY"];
         cell.dateOfThePost.text = [formater stringFromDate:wall.date];
-
+        
         NSURL *url = [NSURL URLWithString: wall.user.photo_100];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         
@@ -232,24 +236,24 @@
         
     }
     
-    return [[UITableViewCell alloc] init];
+        return [[UITableViewCell alloc] init];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ((indexPath.row != [self.allPosts count] + 2) && (indexPath.row != 1)  && (indexPath.row != 0)) {
+    if (indexPath.row == 1) {
         
-        Wall *wall = [self.allPosts objectAtIndex:indexPath.row - 2];
-        return [PostCellTableView heightForCellText: wall.text];
-        
-    } else if (indexPath.row == 1) {
-      
         return self.chooseText ? 120 : 40.f;
         
     } else if (indexPath.row == 0) {
         
         return 150.f;
-            
+        
+    } else if ((indexPath.row != [self.allPosts count] + 2)) {
+        
+        Wall *wall = [self.allPosts objectAtIndex:indexPath.row - 2];
+        return [PostCellTableView heightForCellText: wall.text];
+        
     } else {
         
         return 50.f;
@@ -277,53 +281,51 @@
         [self generatePosts];
         
     } else if (indexPath.row == 1) {
-
-    
-    self.chooseText = !self.chooseText;
-    
-    
-    [self.tableView beginUpdates];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+        
+        
+        self.chooseText = !self.chooseText;
+        
+        
+        [self.tableView beginUpdates];
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView endUpdates];
-    
-    
+        
+        
     } else if(indexPath.row == 0) {
-            
-    
+        
+        
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    
+        
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
-    
-    
-    
-} else  {
-            
-            
-            self.chooseText = NO;
-            [self.tableView beginUpdates];
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [self.tableView endUpdates];
-            
-            
-            static NSString *segue = @"PostSegue";
-            [self performSegueWithIdentifier: segue sender:nil];
-    
-        }
+        
+        
+        
+    } else  {
+        
+        
+        self.chooseText = NO;
+        [self.tableView beginUpdates];
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView endUpdates];
+        
+        
+//        static NSString *segue = @"PostSegue";
+//        [self performSegueWithIdentifier: segue sender:nil];
+        
+    }
+
 }
 
 - (IBAction)sendPost:(UIButton *)sender {
-
+    
     SendTextCell *cell = (SendTextCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     NSString *text = cell.textView.text;
     
     
     [[ServerManager sharedManager] postNewsOnId:self.groupId message:text witthSuccess:^(NSString *str) {
-     
-     } andFailture:^(NSError *error) {
-         
-     }];
+        
+    } andFailture:^(NSError *error) {
+        
+    }];
 }
-
-
-
 @end

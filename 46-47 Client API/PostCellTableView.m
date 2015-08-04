@@ -64,6 +64,8 @@
         
         [self.navConroller pushViewController:mvc animated:YES];
     }
+    
+    [super touchesEnded:touches withEvent:event];
 }
 
 

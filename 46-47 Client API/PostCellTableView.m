@@ -7,6 +7,8 @@
 //
 
 #import "PostCellTableView.h"
+#import "MessageWithUserController.h"
+#import "TableViewController.h"
 
 @implementation PostCellTableView
 
@@ -47,5 +49,22 @@
     
     return CGRectGetHeight(rect) + 2 * offset + 80;
 }
+
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self];
+    
+    if (CGRectContainsPoint(self.photo.frame, point)) {
+        
+        
+        MessageWithUserController *mvc = [self.navConroller.storyboard instantiateViewControllerWithIdentifier:@"MessageWithUserController"];
+        mvc.userID = self.userId;
+        
+        [self.navConroller pushViewController:mvc animated:YES];
+    }
+}
+
 
 @end

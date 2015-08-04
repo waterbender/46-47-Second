@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C6B0E3D6-FF6D-4DCF-8C12-83B547137DD3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>46-47 Client API</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AF0EAD1E77EB83B094BD58DC7D653BFE788BAC10</key>
+		<string>https://github.com/waterbender/iOSCourseGroup.git</string>
+		<key>E3C79AA318EFABF1EC8762DC79EE088CA8329644</key>
+		<string>https://github.com/waterbender/46-47-Client-API.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>46-47 Client API.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AF0EAD1E77EB83B094BD58DC7D653BFE788BAC10</key>
+		<string>../../iOSCourseGroup</string>
+		<key>E3C79AA318EFABF1EC8762DC79EE088CA8329644</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/waterbender/46-47-Client-API.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E3C79AA318EFABF1EC8762DC79EE088CA8329644</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E3C79AA318EFABF1EC8762DC79EE088CA8329644</string>
+			<key>IDESourceControlWCCName</key>
+			<string>46-47-Client-API</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AF0EAD1E77EB83B094BD58DC7D653BFE788BAC10</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOSCourseGroup</string>
+		</dict>
+	</array>
+</dict>
+</plist>

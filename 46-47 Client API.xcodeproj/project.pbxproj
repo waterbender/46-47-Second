@@ -8,7 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		24C02A8958C1F6146DF7578F /* libPods-46-47 Client API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EA6A4C23DECA9C314AFB2B /* libPods-46-47 Client API.a */; };
+		EC350AA71B6E78CD00D859A3 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = EC350AA61B6E78CD00D859A3 /* 1.png */; };
+		EC350AA91B6E78E800D859A3 /* ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC350AA81B6E78E800D859A3 /* ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg */; };
+		EC350AAC1B6E79A700D859A3 /* UserPortfolioController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC350AAB1B6E79A700D859A3 /* UserPortfolioController.m */; };
 		EC51FB8D1B6CC3EA008E036C /* AboutUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EC51FB8C1B6CC3EA008E036C /* AboutUser.m */; };
+		EC7ADAFE1B6F500B009AEB11 /* UsersFromPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7ADAFD1B6F500B009AEB11 /* UsersFromPage.m */; };
+		EC7ADB041B6F6B97009AEB11 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7ADB031B6F6B97009AEB11 /* Message.m */; };
+		EC7ADB071B6F6F79009AEB11 /* MessagesDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7ADB061B6F6F79009AEB11 /* MessagesDialogController.m */; };
+		EC7ADB0D1B6FC37A009AEB11 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7ADB0C1B6FC37A009AEB11 /* MessageCell.m */; };
+		EC7ADB131B6FCC75009AEB11 /* MessageWithUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7ADB121B6FCC75009AEB11 /* MessageWithUserController.m */; };
+		EC7ADB161B6FCE59009AEB11 /* OwnMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7ADB151B6FCE59009AEB11 /* OwnMessage.m */; };
 		EC8300B31B69F91700CB020F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8300B21B69F91700CB020F /* main.m */; };
 		EC8300B61B69F91700CB020F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8300B51B69F91700CB020F /* AppDelegate.m */; };
 		EC8300B91B69F91700CB020F /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8300B81B69F91700CB020F /* TableViewController.m */; };
@@ -40,7 +49,6 @@
 		EC83011F1B6A16DA00CB020F /* AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = EC83011E1B6A16DA00CB020F /* AccessToken.m */; };
 		EC8301221B6A179500CB020F /* ServerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8301211B6A179500CB020F /* ServerObject.m */; };
 		ECA584211B6A3F7B0051018F /* PostCellTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA584201B6A3F7B0051018F /* PostCellTableView.m */; };
-		ECA584241B6B28860051018F /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = ECA584231B6B28860051018F /* 1.png */; };
 		ECA584271B6B2F060051018F /* SendTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA584261B6B2F060051018F /* SendTextCell.m */; };
 		ECA5842A1B6B88080051018F /* UIView+renderingPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA584291B6B88080051018F /* UIView+renderingPicture.m */; };
 		ECA5842D1B6B9DD60051018F /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA5842C1B6B9DD60051018F /* Group.m */; };
@@ -63,8 +71,24 @@
 		70EA6A4C23DECA9C314AFB2B /* libPods-46-47 Client API.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-46-47 Client API.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD42524A18CD0C00D5D6818E /* Pods-46-47 Client API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-46-47 Client API.release.xcconfig"; path = "Pods/Target Support Files/Pods-46-47 Client API/Pods-46-47 Client API.release.xcconfig"; sourceTree = "<group>"; };
 		B651667DED56587A0A2F574A /* Pods-46-47 Client API.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-46-47 Client API.debug.xcconfig"; path = "Pods/Target Support Files/Pods-46-47 Client API/Pods-46-47 Client API.debug.xcconfig"; sourceTree = "<group>"; };
+		EC350AA61B6E78CD00D859A3 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = Images/1.png; sourceTree = "<group>"; };
+		EC350AA81B6E78E800D859A3 /* ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg; path = Images/ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg; sourceTree = "<group>"; };
+		EC350AAA1B6E79A700D859A3 /* UserPortfolioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPortfolioController.h; sourceTree = "<group>"; };
+		EC350AAB1B6E79A700D859A3 /* UserPortfolioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPortfolioController.m; sourceTree = "<group>"; };
 		EC51FB8B1B6CC3EA008E036C /* AboutUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUser.h; sourceTree = "<group>"; };
 		EC51FB8C1B6CC3EA008E036C /* AboutUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUser.m; sourceTree = "<group>"; };
+		EC7ADAFC1B6F500B009AEB11 /* UsersFromPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersFromPage.h; sourceTree = "<group>"; };
+		EC7ADAFD1B6F500B009AEB11 /* UsersFromPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersFromPage.m; sourceTree = "<group>"; };
+		EC7ADB021B6F6B97009AEB11 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		EC7ADB031B6F6B97009AEB11 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		EC7ADB051B6F6F79009AEB11 /* MessagesDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesDialogController.h; sourceTree = "<group>"; };
+		EC7ADB061B6F6F79009AEB11 /* MessagesDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesDialogController.m; sourceTree = "<group>"; };
+		EC7ADB0B1B6FC37A009AEB11 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		EC7ADB0C1B6FC37A009AEB11 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		EC7ADB111B6FCC75009AEB11 /* MessageWithUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageWithUserController.h; sourceTree = "<group>"; };
+		EC7ADB121B6FCC75009AEB11 /* MessageWithUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageWithUserController.m; sourceTree = "<group>"; };
+		EC7ADB141B6FCE59009AEB11 /* OwnMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnMessage.h; sourceTree = "<group>"; };
+		EC7ADB151B6FCE59009AEB11 /* OwnMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnMessage.m; sourceTree = "<group>"; };
 		EC8300AD1B69F91700CB020F /* 46-47 Client API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "46-47 Client API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8300B11B69F91700CB020F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC8300B21B69F91700CB020F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -128,7 +152,6 @@
 		EC8301211B6A179500CB020F /* ServerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerObject.m; sourceTree = "<group>"; };
 		ECA5841F1B6A3F7B0051018F /* PostCellTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCellTableView.h; sourceTree = "<group>"; };
 		ECA584201B6A3F7B0051018F /* PostCellTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCellTableView.m; sourceTree = "<group>"; };
-		ECA584231B6B28860051018F /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		ECA584251B6B2F060051018F /* SendTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendTextCell.h; sourceTree = "<group>"; };
 		ECA584261B6B2F060051018F /* SendTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendTextCell.m; sourceTree = "<group>"; };
 		ECA584281B6B88080051018F /* UIView+renderingPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+renderingPicture.h"; sourceTree = "<group>"; };
@@ -179,6 +202,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EC350AA31B6E77F500D859A3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				EC350AA61B6E78CD00D859A3 /* 1.png */,
+				EC350AA81B6E78E800D859A3 /* ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		EC8300A41B69F91700CB020F = {
 			isa = PBXGroup;
 			children = (
@@ -206,11 +238,11 @@
 				EC8301151B6A039600CB020F /* Controllers */,
 				EC8301161B6A03AA00CB020F /* Libs */,
 				ECA584221B6A3F7E0051018F /* Cells */,
+				EC350AA31B6E77F500D859A3 /* Images */,
 				EC8300B41B69F91700CB020F /* AppDelegate.h */,
 				EC8300B51B69F91700CB020F /* AppDelegate.m */,
 				EC83010E1B6A024800CB020F /* ServerManager.h */,
 				EC83010F1B6A024800CB020F /* ServerManager.m */,
-				ECA584231B6B28860051018F /* 1.png */,
 				EC8300BA1B69F91700CB020F /* Main.storyboard */,
 				EC8300BD1B69F91700CB020F /* Images.xcassets */,
 				EC8300BF1B69F91700CB020F /* LaunchScreen.xib */,
@@ -321,6 +353,10 @@
 				ECA5842C1B6B9DD60051018F /* Group.m */,
 				EC51FB8B1B6CC3EA008E036C /* AboutUser.h */,
 				EC51FB8C1B6CC3EA008E036C /* AboutUser.m */,
+				EC7ADB021B6F6B97009AEB11 /* Message.h */,
+				EC7ADB031B6F6B97009AEB11 /* Message.m */,
+				EC7ADB141B6FCE59009AEB11 /* OwnMessage.h */,
+				EC7ADB151B6FCE59009AEB11 /* OwnMessage.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -333,6 +369,14 @@
 				EC8300B81B69F91700CB020F /* TableViewController.m */,
 				EC83011A1B6A13F500CB020F /* AuthorizationViewController.h */,
 				EC83011B1B6A13F500CB020F /* AuthorizationViewController.m */,
+				EC350AAA1B6E79A700D859A3 /* UserPortfolioController.h */,
+				EC350AAB1B6E79A700D859A3 /* UserPortfolioController.m */,
+				EC7ADAFC1B6F500B009AEB11 /* UsersFromPage.h */,
+				EC7ADAFD1B6F500B009AEB11 /* UsersFromPage.m */,
+				EC7ADB051B6F6F79009AEB11 /* MessagesDialogController.h */,
+				EC7ADB061B6F6F79009AEB11 /* MessagesDialogController.m */,
+				EC7ADB111B6FCC75009AEB11 /* MessageWithUserController.h */,
+				EC7ADB121B6FCC75009AEB11 /* MessageWithUserController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -354,6 +398,8 @@
 				ECA584261B6B2F060051018F /* SendTextCell.m */,
 				ECA5842E1B6BA1810051018F /* HeaderCell.h */,
 				ECA5842F1B6BA1810051018F /* HeaderCell.m */,
+				EC7ADB0B1B6FC37A009AEB11 /* MessageCell.h */,
+				EC7ADB0C1B6FC37A009AEB11 /* MessageCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -452,8 +498,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC8300BC1B69F91700CB020F /* Main.storyboard in Resources */,
+				EC350AA71B6E78CD00D859A3 /* 1.png in Resources */,
+				EC350AA91B6E78E800D859A3 /* ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg in Resources */,
 				EC8300C11B69F91700CB020F /* LaunchScreen.xib in Resources */,
-				ECA584241B6B28860051018F /* 1.png in Resources */,
 				EC8300BE1B69F91700CB020F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,10 +553,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC8300FD1B6A022B00CB020F /* AFHTTPRequestOperation.m in Sources */,
+				EC7ADB041B6F6B97009AEB11 /* Message.m in Sources */,
 				ECB7C80C1B6CBC0D00666BB6 /* MainVC.m in Sources */,
 				EC83010A1B6A022B00CB020F /* UIImageView+AFNetworking.m in Sources */,
 				ECA5842A1B6B88080051018F /* UIView+renderingPicture.m in Sources */,
 				ECB7C8101B6CBD2200666BB6 /* LeftController.m in Sources */,
+				EC7ADAFE1B6F500B009AEB11 /* UsersFromPage.m in Sources */,
 				EC8300B91B69F91700CB020F /* TableViewController.m in Sources */,
 				EC8300FE1B6A022B00CB020F /* AFHTTPRequestOperationManager.m in Sources */,
 				EC83010B1B6A022B00CB020F /* UIProgressView+AFNetworking.m in Sources */,
@@ -518,6 +567,7 @@
 				EC83011F1B6A16DA00CB020F /* AccessToken.m in Sources */,
 				EC8301041B6A022B00CB020F /* AFURLResponseSerialization.m in Sources */,
 				EC83011C1B6A13F500CB020F /* AuthorizationViewController.m in Sources */,
+				EC7ADB0D1B6FC37A009AEB11 /* MessageCell.m in Sources */,
 				EC8301021B6A022B00CB020F /* AFURLConnectionOperation.m in Sources */,
 				EC8301091B6A022B00CB020F /* UIButton+AFNetworking.m in Sources */,
 				ECA584301B6BA1810051018F /* HeaderCell.m in Sources */,
@@ -525,8 +575,11 @@
 				EC8301071B6A022B00CB020F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EC8301011B6A022B00CB020F /* AFSecurityPolicy.m in Sources */,
 				EC8301191B6A05F200CB020F /* Wall.m in Sources */,
+				EC7ADB161B6FCE59009AEB11 /* OwnMessage.m in Sources */,
 				EC83010C1B6A022B00CB020F /* UIRefreshControl+AFNetworking.m in Sources */,
 				EC83010D1B6A022B00CB020F /* UIWebView+AFNetworking.m in Sources */,
+				EC350AAC1B6E79A700D859A3 /* UserPortfolioController.m in Sources */,
+				EC7ADB131B6FCC75009AEB11 /* MessageWithUserController.m in Sources */,
 				EC8300FF1B6A022B00CB020F /* AFHTTPSessionManager.m in Sources */,
 				EC8301081B6A022B00CB020F /* UIAlertView+AFNetworking.m in Sources */,
 				EC51FB8D1B6CC3EA008E036C /* AboutUser.m in Sources */,
@@ -537,6 +590,7 @@
 				ECA584211B6A3F7B0051018F /* PostCellTableView.m in Sources */,
 				EC8301221B6A179500CB020F /* ServerObject.m in Sources */,
 				ECA5842D1B6B9DD60051018F /* Group.m in Sources */,
+				EC7ADB071B6F6F79009AEB11 /* MessagesDialogController.m in Sources */,
 				EC8300B61B69F91700CB020F /* AppDelegate.m in Sources */,
 				EC8300B31B69F91700CB020F /* main.m in Sources */,
 			);

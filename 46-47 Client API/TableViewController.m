@@ -199,10 +199,13 @@
         static NSString *keyForPost = @"TextCell";
         
         PostCellTableView *cell = [self.tableView dequeueReusableCellWithIdentifier:keyForPost];
+        cell.navConroller = self.navigationController;
         
         Wall *wall = [self.allPosts objectAtIndex:indexPath.row - 2];
         cell.postText.text = wall.text;
         cell.likeLabel.text = [@(wall.likes) stringValue];
+        cell.userId = wall.user.id;
+        
         if (indexPath.row - 2 != 0) {
             cell.nameAndLastName.text = [NSString stringWithFormat:@"%@ %@", wall.user.firstName, wall.user.lastName];
         }

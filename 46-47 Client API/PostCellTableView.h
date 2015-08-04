@@ -14,6 +14,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *postText, *likeLabel, *nameAndLastName, *dateOfThePost;
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 
+@property (strong, nonatomic) NSString *userId;
+@property (strong, nonatomic) UINavigationController *navConroller;
+
 + (CGFloat) heightForCellText : (NSString*) text;
+
 
 @end

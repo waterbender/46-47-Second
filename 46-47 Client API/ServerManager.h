@@ -11,6 +11,10 @@
 #import "User.h"
 #import "Group.h"
 
+extern NSString* const ServerManagerUserForTokenDidChangeNotification;
+extern NSString* const ServerManagerUserForTokenKey;
+
+@class AboutUser;
 @interface ServerManager : NSObject
 
 + (instancetype) sharedManager;
@@ -37,6 +41,46 @@ andFailture: (void(^)(NSError *error)) failture;
              userSuccess: (void(^)(Group *group)) success
              andFailture: (void(^)(NSError *error)) failture;
 
+- (void) getAboutUserFromID : (NSString*) ownerID
+                 userSuccess: (void(^)(AboutUser *about)) success
+                 andFailture: (void(^)(NSError *error)) failture;
+
+- (void) getFriendsFromID : (NSString*) ownerID
+              withOffset: (NSInteger) offset
+                andCount: (NSInteger) count
+             userSuccess: (void(^)(NSMutableArray *usersArray)) success
+             andFailture: (void(^)(NSError *error)) failture;
+
+- (void) getFollowersFromID : (NSString*) ownerID
+                  withOffset: (NSInteger) offset
+                    andCount: (NSInteger) count
+                 userSuccess: (void(^)(NSMutableArray *usersArray)) success
+                 andFailture: (void(^)(NSError *error)) failture;
+
+- (void) getSubscriptionsFromID : (NSString*) ownerID
+                      withOffset: (NSInteger) offset
+                        andCount: (NSInteger) count
+                     userSuccess: (void(^)(NSMutableArray *usersArray)) success
+                     andFailture: (void(^)(NSError *error)) failture;
+
+- (void) getDialogsWithOffset: (NSInteger) offset
+                     andCount: (NSInteger) count
+               previewLength : (NSInteger) length
+                  userSuccess: (void(^)(NSMutableArray *dialogsArray)) success
+                  andFailture: (void(^)(NSError *error)) failture;
+
+
+- (void) getMessageWithUserId: (NSString*) userID
+               thatHaveOffset: (NSInteger) offset
+                     andCount: (NSInteger) count
+                  userSuccess: (void(^)(NSMutableArray *messagesArray)) success
+                  andFailture: (void(^)(NSError *error)) failture;
+
+
+- (void) postText: (NSString*) text
+           toUser: (NSString*) userID
+      userSuccess: (void(^)(User *user)) success
+      andFailture: (void(^)(NSError *error)) failture;
 
 @property (strong, nonatomic) User *userForToken;
 

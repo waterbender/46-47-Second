@@ -48,7 +48,7 @@
     "client_id=5011482&"
     "redirect_uri=https://oauth.vk.com/blank.html&"
     "display=mobile&"
-    "scope=139286&" //1989787
+    "scope=143382&" //1989787 +4096
     "response_type=token&"
     "v=5.35";
     

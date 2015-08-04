@@ -17,9 +17,13 @@
         
         NSLog(@"%@", dictionary);
         
-        self.id = [[dictionary objectForKey:@"owner_id"] stringValue];
+        self.id = [[dictionary objectForKey:@"id"] stringValue];
         self.firstName = [dictionary objectForKey:@"first_name"];
         self.lastName = [dictionary objectForKey:@"last_name"];
+        if (!self.lastName) {
+            self.firstName = [dictionary objectForKey:@"name"];
+            self.lastName = @"";
+        }
         self.photo_50 = [dictionary objectForKey:@"photo_50"];
         self.photo_100 = [dictionary objectForKey:@"photo_100"];
     }

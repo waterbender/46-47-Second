@@ -16,5 +16,8 @@
 @property (assign, nonatomic) NSInteger likes;
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) NSDate *date;
+@property (strong, nonatomic) NSString *item_id;
+@property (strong, nonatomic) NSString *idForPost;
+
 
 @end

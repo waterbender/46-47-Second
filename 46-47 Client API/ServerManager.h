@@ -76,11 +76,22 @@ andFailture: (void(^)(NSError *error)) failture;
                   userSuccess: (void(^)(NSMutableArray *messagesArray)) success
                   andFailture: (void(^)(NSError *error)) failture;
 
-
 - (void) postText: (NSString*) text
            toUser: (NSString*) userID
       userSuccess: (void(^)(User *user)) success
       andFailture: (void(^)(NSError *error)) failture;
+
+- (void) postLike: (NSString*) type
+           toUser: (NSString*) owner_id
+           itemID: (NSString*) item_id
+      userSuccess: (void(^)(NSInteger count)) success
+      andFailture: (void(^)(NSError *error)) failture;
+
+- (void) postDeleteLike: (NSString*) type
+                toOwner: (NSString*) owner_id
+                 itemID: (NSString*) item_id
+            userSuccess: (void(^)(NSInteger count)) success
+            andFailture: (void(^)(NSError *error)) failture;
 
 @property (strong, nonatomic) User *userForToken;
 

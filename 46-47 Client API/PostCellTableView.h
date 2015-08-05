@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Wall.h"
 
 @interface PostCellTableView : UITableViewCell
 
@@ -15,7 +16,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
 
 @property (strong, nonatomic) NSString *userId;
+@property (strong, nonatomic) Wall *postFromWall;
 @property (strong, nonatomic) UINavigationController *navConroller;
+@property (weak, nonatomic) IBOutlet UIView *photosVideos;
+@property (weak, nonatomic) IBOutlet UIImageView *likeView;
+
 
 + (CGFloat) heightForCellText : (NSString*) text;
 

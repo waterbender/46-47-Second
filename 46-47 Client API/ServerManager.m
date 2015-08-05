@@ -569,11 +569,80 @@ andFailture: (void(^)(NSError *error)) failture {
             failture(error);
         }
     }];
-
-    
-    
     
 }
 
+- (void) postLike: (NSString*) type
+           toUser: (NSString*) owner_id
+           itemID: (NSString*) item_id
+      userSuccess: (void(^)(NSInteger count)) success
+      andFailture: (void(^)(NSError *error)) failture {
+    
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            
+                            type, @"type",
+                            owner_id, @"owner_id",
+                            item_id, @"item_id",
+                            self.token.token, @"access_token",
+                            @"5.35", @"v",
+                            
+                            nil];
+
+    
+    [self.manager POST:@"likes.add" parameters:params success:^(AFHTTPRequestOperation * operation, id dictionary) {
+        
+        NSInteger likes = [[[dictionary objectForKey:@"response"] objectForKey:@"likes"] integerValue];
+        
+        if (success) {
+            success(likes);
+        }
+        
+    } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
+        
+        NSLog(@"%@ %ld", [error localizedDescription], [operation.responseObject statusCode]);
+        
+        if (failture) {
+            failture(error);
+        }
+    }];
+}
+
+
+- (void) postDeleteLike: (NSString*) type
+                 toOwner: (NSString*) owner_id
+                 itemID: (NSString*) item_id
+            userSuccess: (void(^)(NSInteger count)) success
+            andFailture: (void(^)(NSError *error)) failture {
+    
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            
+                            type, @"type",
+                            owner_id, @"owner_id",
+                            item_id, @"item_id",
+                            self.token.token, @"access_token",
+                            @"5.35", @"v",
+                            
+                            nil];
+    
+    
+    [self.manager POST:@"likes.delete" parameters:params success:^(AFHTTPRequestOperation * operation, id dictionary) {
+        
+        NSInteger likes = [[[dictionary objectForKey:@"response"] objectForKey:@"likes"] integerValue];
+        
+        if (success) {
+            success(likes);
+        }
+        
+    } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
+        
+        NSLog(@"%@ %ld", [error localizedDescription], [operation.responseObject statusCode]);
+        
+        if (failture) {
+            failture(error);
+        }
+    }];
+}
 
 @end

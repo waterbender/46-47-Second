@@ -9,6 +9,7 @@
 #import "PostCellTableView.h"
 #import "MessageWithUserController.h"
 #import "TableViewController.h"
+#import "ServerManager.h"
 
 @implementation PostCellTableView
 
@@ -47,7 +48,7 @@
     
     CGRect rect = [text boundingRectWithSize:CGSizeMake(320 - 2*offset, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dictionary context:nil];
     
-    return CGRectGetHeight(rect) + 2 * offset + 80;
+    return CGRectGetHeight(rect) + 2 * offset + 100;
 }
 
 
@@ -63,10 +64,42 @@
         mvc.userID = self.userId;
         
         [self.navConroller pushViewController:mvc animated:YES];
+        
+    } else if (CGRectContainsPoint(self.likeView.frame, point)) {
+        
+        NSInteger numOfLikes = [self.likeLabel.text integerValue];
+        
+        [[ServerManager sharedManager] postLike:@"post" toUser:self.postFromWall.idForPost itemID:self.postFromWall.item_id userSuccess:^(NSInteger success) {
+            
+            
+            if (success > numOfLikes) {
+                
+                self.likeLabel.text = [@(success) stringValue];
+            } else if (numOfLikes == success) {
+                
+                self.likeLabel.text = [@(numOfLikes-1) stringValue];
+                
+                [[ServerManager sharedManager] postDeleteLike:@"post" toOwner:self.postFromWall.idForPost itemID:self.postFromWall.item_id userSuccess:^(NSInteger count) {
+                    
+                    
+                    
+                } andFailture:nil];
+                
+                
+            }
+            
+        } andFailture:^(NSError *error) {
+            
+        }];
+        
+        [super touchesCancelled:touches withEvent:event];
+        return;
     }
     
     [super touchesEnded:touches withEvent:event];
 }
+
+
 
 
 @end

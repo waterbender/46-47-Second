@@ -18,15 +18,15 @@
         
         NSLog(@"%@", dictionary);
         
-        
-        
-        NSNumber *dateNum = [dictionary objectForKey:@"date"];
-        self.date = [NSDate dateWithTimeIntervalSince1970:[dateNum doubleValue]];
+        self.item_id = [[dictionary objectForKey: @"id"] stringValue];
         self.text = [dictionary objectForKey:@"text"];
         self.likes = [[[dictionary objectForKey:@"likes"] objectForKey:@"count"] integerValue];
-        
+        NSNumber *dateNum = [dictionary objectForKey:@"date"];
+        self.date = [NSDate dateWithTimeIntervalSince1970:[dateNum doubleValue]];
+        self.idForPost = [[dictionary objectForKey:@"owner_id"] stringValue];
 
-        [[ServerManager sharedManager] getUserFromID:[dictionary objectForKey:@"from_id"] userSuccess:^(User *user) {
+        
+        [[ServerManager sharedManager] getUserFromID: [[dictionary objectForKey:@"from_id"] stringValue] userSuccess:^(User *user) {
             self.user = user;
             
         } andFailture:nil];

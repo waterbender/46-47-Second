@@ -202,6 +202,7 @@
         cell.navConroller = self.navigationController;
         
         Wall *wall = [self.allPosts objectAtIndex:indexPath.row - 2];
+        cell.postFromWall = wall;
         cell.postText.text = wall.text;
         cell.likeLabel.text = [@(wall.likes) stringValue];
         cell.userId = wall.user.id;
@@ -219,6 +220,7 @@
         
         __weak PostCellTableView *weakCell = cell;
         weakCell.imageView.image = nil;
+        weakCell.photosVideos = nil;
         
         [weakCell.imageView setImageWithURLRequest:request placeholderImage:nil success:^void(NSURLRequest * request, NSHTTPURLResponse * response, UIImage * image) {
             
@@ -274,11 +276,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     
     if (indexPath.row == [self.allPosts count] + 2) {
         
         [self generatePosts];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         
     } else if (indexPath.row == 1) {
         
@@ -289,7 +292,7 @@
         [self.tableView beginUpdates];
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
         [self.tableView endUpdates];
-        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         
     } else if(indexPath.row == 0) {
         
@@ -297,7 +300,7 @@
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
-        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         
         
     } else  {
@@ -308,9 +311,6 @@
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.tableView endUpdates];
         
-        
-//        static NSString *segue = @"PostSegue";
-//        [self performSegueWithIdentifier: segue sender:nil];
         
     }
 
@@ -328,4 +328,23 @@
         
     }];
 }
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    
+}
+
+-(void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    
+    
+    
+}
+
+
+
+
+
+
 @end

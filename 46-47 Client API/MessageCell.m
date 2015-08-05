@@ -11,6 +11,7 @@
 @implementation MessageCell
 
 
+
 + (CGFloat) heightForCellWithText : (NSString*) text {
     
     CGFloat offset = 1.f;

@@ -93,6 +93,13 @@ andFailture: (void(^)(NSError *error)) failture;
             userSuccess: (void(^)(NSInteger count)) success
             andFailture: (void(^)(NSError *error)) failture;
 
+- (void) getCommentsWithOwnerID: (NSString*) ownerID
+                        postID: (NSString*) postID
+                        offset: (NSInteger) offset
+                      andCount: (NSInteger) count
+                   userSuccess: (void(^)(NSMutableArray *commentsArray)) success
+                   andFailture: (void(^)(NSError *error)) failture;
+
 @property (strong, nonatomic) User *userForToken;
 
 @end

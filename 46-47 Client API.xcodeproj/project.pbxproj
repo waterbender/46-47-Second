@@ -11,8 +11,10 @@
 		EC350AA71B6E78CD00D859A3 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = EC350AA61B6E78CD00D859A3 /* 1.png */; };
 		EC350AA91B6E78E800D859A3 /* ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC350AA81B6E78E800D859A3 /* ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg */; };
 		EC350AAC1B6E79A700D859A3 /* UserPortfolioController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC350AAB1B6E79A700D859A3 /* UserPortfolioController.m */; };
+		EC41ED6B1B776AE200ACEB30 /* CommentObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EC41ED6A1B776AE200ACEB30 /* CommentObject.m */; };
 		EC51FB8D1B6CC3EA008E036C /* AboutUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EC51FB8C1B6CC3EA008E036C /* AboutUser.m */; };
 		EC53A99A1B70CF99004F1304 /* WallWithPostsController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC53A9991B70CF99004F1304 /* WallWithPostsController.m */; };
+		EC5E43141B72487D00478740 /* OwnPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E43131B72487D00478740 /* OwnPostController.m */; };
 		EC7ADAFE1B6F500B009AEB11 /* UsersFromPage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7ADAFD1B6F500B009AEB11 /* UsersFromPage.m */; };
 		EC7ADB041B6F6B97009AEB11 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7ADB031B6F6B97009AEB11 /* Message.m */; };
 		EC7ADB071B6F6F79009AEB11 /* MessagesDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7ADB061B6F6F79009AEB11 /* MessagesDialogController.m */; };
@@ -75,10 +77,14 @@
 		EC350AA81B6E78E800D859A3 /* ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg; path = Images/ogonki_fioletovyy_fon_kruzhki_6000x3375.jpg; sourceTree = "<group>"; };
 		EC350AAA1B6E79A700D859A3 /* UserPortfolioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPortfolioController.h; sourceTree = "<group>"; };
 		EC350AAB1B6E79A700D859A3 /* UserPortfolioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPortfolioController.m; sourceTree = "<group>"; };
+		EC41ED691B776AE200ACEB30 /* CommentObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentObject.h; sourceTree = "<group>"; };
+		EC41ED6A1B776AE200ACEB30 /* CommentObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentObject.m; sourceTree = "<group>"; };
 		EC51FB8B1B6CC3EA008E036C /* AboutUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUser.h; sourceTree = "<group>"; };
 		EC51FB8C1B6CC3EA008E036C /* AboutUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUser.m; sourceTree = "<group>"; };
 		EC53A9981B70CF99004F1304 /* WallWithPostsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WallWithPostsController.h; path = "AFNetworking-master/WallWithPostsController.h"; sourceTree = "<group>"; };
 		EC53A9991B70CF99004F1304 /* WallWithPostsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WallWithPostsController.m; path = "AFNetworking-master/WallWithPostsController.m"; sourceTree = "<group>"; };
+		EC5E43121B72487D00478740 /* OwnPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnPostController.h; sourceTree = "<group>"; };
+		EC5E43131B72487D00478740 /* OwnPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnPostController.m; sourceTree = "<group>"; };
 		EC7ADAFC1B6F500B009AEB11 /* UsersFromPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersFromPage.h; sourceTree = "<group>"; };
 		EC7ADAFD1B6F500B009AEB11 /* UsersFromPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersFromPage.m; sourceTree = "<group>"; };
 		EC7ADB021B6F6B97009AEB11 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
@@ -357,6 +363,8 @@
 				EC7ADB031B6F6B97009AEB11 /* Message.m */,
 				EC7ADB141B6FCE59009AEB11 /* OwnMessage.h */,
 				EC7ADB151B6FCE59009AEB11 /* OwnMessage.m */,
+				EC41ED691B776AE200ACEB30 /* CommentObject.h */,
+				EC41ED6A1B776AE200ACEB30 /* CommentObject.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -377,6 +385,8 @@
 				EC7ADB061B6F6F79009AEB11 /* MessagesDialogController.m */,
 				EC7ADB111B6FCC75009AEB11 /* MessageWithUserController.h */,
 				EC7ADB121B6FCC75009AEB11 /* MessageWithUserController.m */,
+				EC5E43121B72487D00478740 /* OwnPostController.h */,
+				EC5E43131B72487D00478740 /* OwnPostController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -392,14 +402,14 @@
 		ECA584221B6A3F7E0051018F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				ECA5841F1B6A3F7B0051018F /* PostCellTableView.h */,
-				ECA584201B6A3F7B0051018F /* PostCellTableView.m */,
 				ECA584251B6B2F060051018F /* SendTextCell.h */,
 				ECA584261B6B2F060051018F /* SendTextCell.m */,
 				ECA5842E1B6BA1810051018F /* HeaderCell.h */,
 				ECA5842F1B6BA1810051018F /* HeaderCell.m */,
 				EC7ADB0B1B6FC37A009AEB11 /* MessageCell.h */,
 				EC7ADB0C1B6FC37A009AEB11 /* MessageCell.m */,
+				ECA5841F1B6A3F7B0051018F /* PostCellTableView.h */,
+				ECA584201B6A3F7B0051018F /* PostCellTableView.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -562,6 +572,7 @@
 				EC53A99A1B70CF99004F1304 /* WallWithPostsController.m in Sources */,
 				EC8300FE1B6A022B00CB020F /* AFHTTPRequestOperationManager.m in Sources */,
 				EC83010B1B6A022B00CB020F /* UIProgressView+AFNetworking.m in Sources */,
+				EC41ED6B1B776AE200ACEB30 /* CommentObject.m in Sources */,
 				EC8301001B6A022B00CB020F /* AFNetworkReachabilityManager.m in Sources */,
 				EC8301131B6A037B00CB020F /* User.m in Sources */,
 				EC83011F1B6A16DA00CB020F /* AccessToken.m in Sources */,
@@ -592,6 +603,7 @@
 				ECA5842D1B6B9DD60051018F /* Group.m in Sources */,
 				EC7ADB071B6F6F79009AEB11 /* MessagesDialogController.m in Sources */,
 				EC8300B61B69F91700CB020F /* AppDelegate.m in Sources */,
+				EC5E43141B72487D00478740 /* OwnPostController.m in Sources */,
 				EC8300B31B69F91700CB020F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

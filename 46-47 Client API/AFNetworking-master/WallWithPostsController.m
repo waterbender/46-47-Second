@@ -16,6 +16,7 @@
 #import "UIView+renderingPicture.h"
 #import "Group.h"
 #import "HeaderCell.h"
+#import "OwnPostController.h"
 
 @interface WallWithPostsController ()
 
@@ -26,6 +27,7 @@
 @property (assign, nonatomic) CGRect originRect;
 @property (strong, nonatomic) SendTextCell *cell;
 @property (strong, nonatomic) Group *group;
+@property (strong, nonatomic) NSIndexPath *indexPath;
 
 - (IBAction)sendPost:(UIButton *)sender;
 
@@ -274,9 +276,10 @@
     }
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
+    self.indexPath = [NSIndexPath indexPathForRow:indexPath.row-2 inSection:indexPath.section];
     
     if (indexPath.row == [self.allPosts count] + 2) {
         
@@ -307,11 +310,13 @@
         
         
         self.chooseText = NO;
+       
+        
         [self.tableView beginUpdates];
+        
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.tableView endUpdates];
-        
-        
+    
     }
 
 }
@@ -329,21 +334,23 @@
     }];
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    self.indexPath = [NSIndexPath indexPathForRow:indexPath.row-2 inSection:indexPath.section];
+    
+    return indexPath;
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     
-    
+    if ([segue.identifier isEqualToString:@"PostSegue"]) {
+        
+        OwnPostController *pvc = segue.destinationViewController;
+        pvc.mainNew = [self.allPosts objectAtIndex:self.indexPath.row];
+        
+    }
 }
-
--(void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    
-    
-    
-}
-
-
-
 
 
 

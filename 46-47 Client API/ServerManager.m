@@ -13,6 +13,7 @@
 #import "AboutUser.h"
 #import "Message.h"
 #import "OwnMessage.h"
+#import "CommentObject.h"
 
 NSString* const ServerManagerUserForTokenDidChangeNotification = @"ServerManageruserForTokenDidChangeNotification";
 
@@ -644,5 +645,58 @@ andFailture: (void(^)(NSError *error)) failture {
         }
     }];
 }
+
+
+- (void) getCommentsWithOwnerID: (NSString*) ownerID
+                         postID: (NSString*) postID
+                         offset: (NSInteger) offset
+                       andCount: (NSInteger) count
+                    userSuccess: (void(^)(NSMutableArray *commentsArray)) success
+                    andFailture: (void(^)(NSError *error)) failture {
+    
+    
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            ownerID, @"owner_id",
+                            postID, @"post_id",
+                            @(1), @"need_likes",
+                            @(offset), @"offset",
+                            @(count), @"count",
+                            @(0), @"preview_length",
+                            self.token.token, @"access_token",
+                            @"5.35", @"v", 
+                            nil];
+    
+    [self.manager GET:@"wall.getComments" parameters:params success:^(AFHTTPRequestOperation * operation, id dictionary) {
+        
+        
+        NSLog(@"%@", dictionary);
+        
+        NSMutableArray *endedArray = [NSMutableArray array];
+        NSDictionary *dictArray = [dictionary objectForKey:@"response"];
+        NSArray *items = [dictArray objectForKey:@"items"];
+        
+        for (NSDictionary *dict in items) {
+    
+            CommentObject *message = [[CommentObject alloc] initWithServerResponse:dict];
+            [endedArray addObject:message];
+        }
+        
+        if (success) {
+            success(endedArray);
+        }
+        
+    } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
+        
+        NSLog(@"%@ %ld", [error localizedDescription], [operation.responseObject statusCode]);
+        
+        if (failture) {
+            failture(error);
+        }
+    }];
+    
+    
+}
+
 
 @end

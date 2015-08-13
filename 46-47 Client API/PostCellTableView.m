@@ -64,12 +64,21 @@
         mvc.userID = self.userId;
         
         [self.navConroller pushViewController:mvc animated:YES];
+        [super touchesCancelled:touches withEvent:event];
         
     } else if (CGRectContainsPoint(self.likeView.frame, point)) {
         
         NSInteger numOfLikes = [self.likeLabel.text integerValue];
         
-        [[ServerManager sharedManager] postLike:@"post" toUser:self.postFromWall.idForPost itemID:self.postFromWall.item_id userSuccess:^(NSInteger success) {
+        NSString *idForLike = self.postFromWall.idForPost;
+        NSString *itemID = self.postFromWall.item_id;
+        
+        if (!idForLike) {
+            idForLike = self.comment.groupID;
+            itemID = self.comment.item_id;
+        }
+        
+        [[ServerManager sharedManager] postLike:@"comment" toUser:idForLike itemID:itemID userSuccess:^(NSInteger success) {
             
             
             if (success > numOfLikes) {
@@ -79,7 +88,7 @@
                 
                 self.likeLabel.text = [@(numOfLikes-1) stringValue];
                 
-                [[ServerManager sharedManager] postDeleteLike:@"post" toOwner:self.postFromWall.idForPost itemID:self.postFromWall.item_id userSuccess:^(NSInteger count) {
+                [[ServerManager sharedManager] postDeleteLike:@"comment" toOwner:idForLike itemID:itemID userSuccess:^(NSInteger count) {
                     
                     
                     
@@ -93,6 +102,7 @@
         }];
         
         [super touchesCancelled:touches withEvent:event];
+        
         return;
     }
     

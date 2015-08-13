@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Wall.h"
+#import "CommentObject.h"
 
 @interface PostCellTableView : UITableViewCell
 
@@ -17,6 +18,7 @@
 
 @property (strong, nonatomic) NSString *userId;
 @property (strong, nonatomic) Wall *postFromWall;
+@property (strong, nonatomic) CommentObject *comment;
 @property (strong, nonatomic) UINavigationController *navConroller;
 @property (weak, nonatomic) IBOutlet UIView *photosVideos;
 @property (weak, nonatomic) IBOutlet UIImageView *likeView;

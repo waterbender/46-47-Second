@@ -100,6 +100,12 @@ andFailture: (void(^)(NSError *error)) failture;
                    userSuccess: (void(^)(NSMutableArray *commentsArray)) success
                    andFailture: (void(^)(NSError *error)) failture;
 
+- (void) postComment: (NSString*) text
+           toOwnerId: (NSString*) ownerID
+           andItemID: (NSString*) postID
+         userSuccess: (void(^)(bool success)) success
+         andFailture: (void(^)(NSError *error)) failture;
+
 @property (strong, nonatomic) User *userForToken;
 
 @end

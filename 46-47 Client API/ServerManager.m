@@ -698,5 +698,39 @@ andFailture: (void(^)(NSError *error)) failture {
     
 }
 
+- (void) postComment: (NSString*) text
+           toOwnerId: (NSString*) ownerID
+           andItemID: (NSString*) postID
+      userSuccess: (void(^)(bool success)) success
+      andFailture: (void(^)(NSError *error)) failture {
+    
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            ownerID, @"owner_id",
+                            postID, @"post_id",
+                            text, @"text",
+                            @"5.37", @"v",
+                            self.token.token, @"access_token",
+                            nil];
+    
+    
+    [self.manager POST:@"wall.addComment" parameters:params success:^(AFHTTPRequestOperation * operation, id dictionary) {
+        
+        NSLog(@"%@", dictionary);
+
+        if (success) {
+            success(YES);
+        }
+        
+    } failure:^(AFHTTPRequestOperation * operation, NSError * error) {
+        
+        NSLog(@"%@ %ld", [error localizedDescription], [operation.responseObject statusCode]);
+        
+        if (failture) {
+            failture(error);
+        }
+    }];
+    
+}
 
 @end

@@ -11,10 +11,13 @@
 #import "UIImageView+AFNetworking.h"
 #import "ServerManager.h"
 #import "CommentObject.h"
+#import "SendTextCell.h"
 
 @interface OwnPostController ()
 
 @property (strong, nonatomic) NSMutableArray *commentsArray;
+@property (assign, nonatomic) BOOL messegeCellHide;
+- (IBAction)sendCommentAction:(UIButton *)sender;
 
 @end
 
@@ -25,7 +28,7 @@
 - (void) viewDidLoad {
     
     self.commentsArray = [NSMutableArray array];
-    
+    self.messegeCellHide = YES;
 }
 
 
@@ -33,6 +36,22 @@
     
     [super viewWillAppear:animated];
     [self generateComments];
+}
+
+
+- (void) refreshComments {
+    
+    NSInteger count = [self.commentsArray count];
+    self.commentsArray = [NSMutableArray array];
+    
+    [[ServerManager sharedManager] getCommentsWithOwnerID:self.mainNew.idForPost postID:self.mainNew.item_id offset:0 andCount:count userSuccess:^(NSMutableArray *commentsArray) {
+        
+        [self.commentsArray addObjectsFromArray:commentsArray];
+        [self.tableView reloadData];
+        
+    } andFailture:^(NSError *error) {
+        
+    }];
 }
 
 - (void) generateComments {
@@ -53,8 +72,25 @@
     
     static NSString *postCellKey = @"TextPostCellKey";
     static NSString *cellForComment = @"CommentText";
+    static NSString *sendHide = @"SendPostText";
+    static NSString *sendShown = @"SendPost";
+    
     
     if (indexPath.row == 0) {
+        
+        SendTextCell *cell;
+        
+        if (self.messegeCellHide) {
+            cell = [self.tableView dequeueReusableCellWithIdentifier:sendHide];
+        } else {
+            
+            cell = [self.tableView dequeueReusableCellWithIdentifier:sendShown];
+        }
+        
+        
+        return cell;
+        
+    } else if (indexPath.row == 1) {
        
         PostCellTableView *cell = [self.tableView dequeueReusableCellWithIdentifier:postCellKey];
         
@@ -64,7 +100,7 @@
         cell.likeLabel.text = [@(self.mainNew.likes) stringValue];
         cell.userId = self.mainNew.user.id;
         
-        if (indexPath.row == 0) {
+        if (indexPath.row == 1) {
             if (self.mainNew.user.firstName) {
                             cell.nameAndLastName.text = [NSString stringWithFormat:@"%@ %@", self.mainNew.user.firstName, self.mainNew.user.lastName];
             }
@@ -100,7 +136,7 @@
     } else {
         
         
-        indexPath = [NSIndexPath indexPathForRow:indexPath.row-1 inSection:indexPath.section];
+        indexPath = [NSIndexPath indexPathForRow:indexPath.row-2 inSection:indexPath.section];
         
         PostCellTableView *cell = [self.tableView dequeueReusableCellWithIdentifier:cellForComment];
         
@@ -151,26 +187,33 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1 + [self.commentsArray count];
+    return 2 + [self.commentsArray count];
     
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0 && self.messegeCellHide) {
+        
+        return 50.f;
+        
+    } else if (indexPath.row == 0 && !self.messegeCellHide) {
+        
+        return 100;
+    } else if (indexPath.row == 1) {
         
         return [PostCellTableView heightForCellText: self.mainNew.text];
     } else {
         
-        CommentObject *object = [self.commentsArray objectAtIndex:indexPath.row - 1];
+        CommentObject *object = [self.commentsArray objectAtIndex:indexPath.row - 2];
         return [PostCellTableView heightForCellText: object.text] + 10 ;
     }
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == [self.commentsArray count] - 5) {
+    if (indexPath.row == [self.commentsArray count] - 4) {
         
         [self generateComments];
     }
@@ -178,8 +221,30 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (indexPath.row == 0) {
+        
+        self.messegeCellHide = !self.messegeCellHide;
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+
+- (IBAction)sendCommentAction:(UIButton *)sender {
+    
+    
+    SendTextCell *cell = (SendTextCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    [[ServerManager sharedManager] postComment:cell.textView.text toOwnerId:self.mainNew.idForPost andItemID:self.mainNew.item_id userSuccess:^(bool success) {
+        
+        self.messegeCellHide = YES;
+        [self refreshComments];
+        
+    } andFailture:nil];
+    
+}
+
 
 
 @end
